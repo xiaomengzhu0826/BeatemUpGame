@@ -16,7 +16,8 @@ public partial class Stage : Node2D
 
         foreach (Node2D container in _containers.GetChildren())
         {
-            SignalManager.EmitOnOrphanActor(container);
+            CallDeferred(nameof(DeferredEmit), container);
+            //SignalManager.EmitOnOrphanActor(container);
         }
 
         for (int i = 0; i < _doors.GetChildCount(); i++)
@@ -41,8 +42,8 @@ public partial class Stage : Node2D
         }
     }
 
-    private void DeferredEmit(Door door)
+    private void DeferredEmit(Node2D node2D)
     {
-        SignalManager.EmitOnOrphanActor(door);
+        SignalManager.EmitOnOrphanActor(node2D);
     }
 }

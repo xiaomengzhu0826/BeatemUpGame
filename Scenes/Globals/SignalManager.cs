@@ -51,11 +51,18 @@ public partial class SignalManager : Node
     {
         Instance.EmitSignal(SignalName.OnCheckPointCompelete);
     }
-    
+
     [Signal] public delegate void OnOrphanActorEventHandler(Node2D orphan);
-    
+
     public static void EmitOnOrphanActor(Node2D orphan)
     {
-        Instance.EmitSignal(SignalName.OnOrphanActor,orphan);
+        Instance.EmitSignal(SignalName.OnOrphanActor, orphan);
+    }
+    
+    [Signal] public delegate void OnHealthChangeEventHandler(Character.Type characterType,int currentHealth,int maxHealth);
+    
+    public static void EmitOnHealthChange(int characterType,int currentHealth,int maxHealth)
+    {
+        Instance.EmitSignal(SignalName.OnHealthChange,characterType,currentHealth,maxHealth);
     }
 }

@@ -35,13 +35,19 @@ public partial class PrefabManager : Node
         { EnemyKeys.BOUNCER, GD.Load<PackedScene>("res://Scenes/Characters/IgorBoss.tscn") },
     };
 
-
-
     public static readonly Dictionary<CollectibleKeys, PackedScene> COLLECTIBLE_PREFAB = new Dictionary<CollectibleKeys, PackedScene>()
     {
         { CollectibleKeys.KNIFE, GD.Load<PackedScene>("res://Scenes/Props/Knife.tscn") },
         { CollectibleKeys.SHOT, GD.Load<PackedScene>("res://Scenes/Props/Shot.tscn") },
         { CollectibleKeys.GUN, GD.Load<PackedScene>("res://Scenes/Props/Gun.tscn") },
         { CollectibleKeys.FOOD, GD.Load<PackedScene>("res://Scenes/Props/Food.tscn") },
+    };
+
+    public static readonly Dictionary<Character.Type, PackedScene> AVATAR_PREFAB = new Dictionary<Character.Type, PackedScene>()
+    {
+        { Character.Type.PUNK, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-punk.png") },
+        { Character.Type.GOON, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-goon.png") },
+        { Character.Type.THUG, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-thug.png") },
+        { Character.Type.BOUNCER, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-boss.png") },
     };
 }

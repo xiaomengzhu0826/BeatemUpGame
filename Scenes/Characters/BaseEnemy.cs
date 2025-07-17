@@ -6,6 +6,7 @@ public partial class BaseEnemy : Character
 {
 	private const int EDGE_SCREEN_BUFFER = 10;
 
+    [Export] private int _durationAppear;
 	[Export] private int _durationBetweenMeleeAttacks;
 	[Export] private int _durationPrepMeleeAttack;
 	[Export] private int _durationBetweenRangeAttacks;
@@ -19,11 +20,36 @@ public partial class BaseEnemy : Character
 	private float _timeSincePrepMeleeAttack = Time.GetTicksMsec();
 	private float _timeSinceLastRangeAttack = Time.GetTicksMsec();
 	private float _timeSincePrepRangeAttack = Time.GetTicksMsec();
+	private float _timeSinceStartAppearing = Time.GetTicksMsec();
 
 	public override void _Ready()
 	{
 		base._Ready();
 		_animationAttacks.AddRange(new string[] { "punch", "punch_alt" });
+	}
+
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+		ProcessAppear();
+	}
+
+	private void ProcessAppear()
+	{
+		if (_currentState == State.APPEARING)
+		{
+			var progress = (Time.GetTicksMsec() - _timeSinceStartAppearing) / _durationAppear;
+			if (progress < 1)
+			{
+				Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, progress);
+			}
+			else
+			{
+				Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 1);
+				_currentState = State.IDLE;
+			}
+			
+		}
 	}
 
 	protected override void HandleInput()
@@ -103,7 +129,8 @@ public partial class BaseEnemy : Character
 		else
 		{
 			_currentState = State.APPEARING;
-			Modulate = Modulate=new Color(Modulate.R, Modulate.G, Modulate.B, 0);
+			Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 0);
+			_timeSinceStartAppearing = Time.GetTicksMsec();
 		}
 	}
 

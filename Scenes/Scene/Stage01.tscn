@@ -41,6 +41,9 @@ position = Vector2(22, 31)
 [node name="BaseEnemy4" parent="CheckPoints/CheckPoint/Enemies" index="5" instance=ExtResource("6_b5yww")]
 position = Vector2(43, 27)
 
+[node name="BaseEnemy5" parent="CheckPoints/CheckPoint/Enemies" index="6" instance=ExtResource("6_b5yww")]
+position = Vector2(30, 23)
+
 [node name="CheckPoint2" parent="CheckPoints" index="1" instance=ExtResource("4_5i27n")]
 position = Vector2(234, 0)
 _nbSimultaneousEnemies = 3
@@ -73,7 +76,7 @@ position = Vector2(162, 59)
 
 [node name="Door" parent="Doors" index="0" node_paths=PackedStringArray("_enemies") instance=ExtResource("6_s4bg0")]
 position = Vector2(159, 32)
-_enemies = [NodePath("../../CheckPoints/CheckPoint/Enemies/BaseEnemy3"), NodePath("../../CheckPoints/CheckPoint/Enemies/BaseEnemy4")]
+_enemies = [NodePath("../../CheckPoints/CheckPoint/Enemies/BaseEnemy3"), NodePath("../../CheckPoints/CheckPoint/Enemies/BaseEnemy4"), NodePath("../../CheckPoints/CheckPoint/Enemies/BaseEnemy5")]
 
 [editable path="CheckPoints/CheckPoint"]
 [editable path="CheckPoints/CheckPoint2"]

@@ -118,6 +118,7 @@ public partial class World : Node
         {
             _doors.Add(door);
         }
+        GD.Print(orphan.Name);
         orphan.Reparent(_actorsContainer);
     }
 }

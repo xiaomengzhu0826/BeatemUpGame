@@ -677,6 +677,7 @@ size = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("2_jn4qe")
+_durationAppear = 1000
 _durationBetweenMeleeAttacks = 2000
 _durationPrepMeleeAttack = 500
 _durationBetweenRangeAttacks = 4000

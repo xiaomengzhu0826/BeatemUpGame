@@ -32,3 +32,4 @@ D:\Godot\GodotTutorials\BeatemUpGame\.godot\mono\temp\obj\Debug\refint\Beat-emUp
 D:\Godot\GodotTutorials\BeatemUpGame\.godot\mono\temp\obj\Debug\Beat-emUpGame.pdb
 D:\Godot\GodotTutorials\BeatemUpGame\.godot\mono\temp\obj\Debug\Beat-emUpGame.genruntimeconfig.cache
 D:\Godot\GodotTutorials\BeatemUpGame\.godot\mono\temp\obj\Debug\ref\Beat-emUpGame.dll
+D:\Godot\GodotTutorials\BeatemUpGame\.godot\mono\temp\obj\Debug\Beat-emUpGame.sourcelink.json

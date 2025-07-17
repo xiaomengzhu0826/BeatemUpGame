@@ -44,7 +44,7 @@ public partial class Character : CharacterBody2D
 	private Area2D _collectibleSensor;
 	private Node2D _weaponPosition;
 
-	protected float _currentHealth = 0;
+	protected int _currentHealth = 0;
 	protected Vector2 _heading = Vector2.Right;
 	public float _height = 0;
 	protected float _heightSpeed = 0;
@@ -119,7 +119,7 @@ public partial class Character : CharacterBody2D
 			{State.APPEARING,"idle"},
 		};
 
-		_currentHealth = _maxHealth;
+		SetHealth(_maxHealth);
 
 		NodeInitiation();
 
@@ -226,7 +226,7 @@ public partial class Character : CharacterBody2D
 
 	protected virtual void HandleAirTime(double delta)
 	{
-		var airborneStates = new List<State> { State.JUMP, State.JUMPKICK, State.FALL ,State.DROP};
+		var airborneStates = new List<State> { State.JUMP, State.JUMPKICK, State.FALL, State.DROP };
 		if (airborneStates.Contains(_currentState))
 		{
 			_height += _heightSpeed * (float)delta;
@@ -407,9 +407,9 @@ public partial class Character : CharacterBody2D
 			}
 			if (collectible._currentType == Collectible.Type.FOOD)
 			{
-				GD.Print(_currentHealth);
-				_currentHealth = _maxHealth;
-				GD.Print(_currentHealth);
+				//GD.Print(_currentHealth);
+				SetHealth(_maxHealth);
+				//GD.Print(_currentHealth);
 			}
 			collectible.QueueFree();
 		}
@@ -539,7 +539,7 @@ public partial class Character : CharacterBody2D
 				_hasGun = false;
 				SignalManager.EmitOnSpawnCollectible((int)Collectible.Type.GUN, (int)Collectible.State.FALL, GlobalPosition, Vector2.Zero, 0.0f, _autoDestroyOnDrop);
 			}
-			_currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
+			SetHealth(_currentHealth - damage);
 			if (_currentHealth == 0 || hitType == DamageReceiver.HitType.KNOCKDOWN)
 			{
 				_currentState = State.FALL;
@@ -575,6 +575,12 @@ public partial class Character : CharacterBody2D
 			Vector2 direction = collateralDamage.GlobalPosition.X > GlobalPosition.X ? Vector2.Right : Vector2.Left;
 			collateralDamage.EmitSignal(DamageReceiver.SignalName.OnDamageReceived, 0, direction, (int)DamageReceiver.HitType.KNOCKDOWN);
 		}
+	}
+
+	private void SetHealth(int health)
+	{
+		_currentHealth = Mathf.Clamp(health, 0, _maxHealth);
+		SignalManager.EmitOnHealthChange((int)_currentType, _currentHealth,_maxHealth);
 	}
 
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Beat-emUpGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+658837a238f0191eb8be68034ea8e19f1a7c912b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85c183aa4959add57f80f2d60b566a7db28f749a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Beat-emUpGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Beat-emUpGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

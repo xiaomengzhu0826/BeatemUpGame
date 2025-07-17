@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://djqfednupjsyy"]
+
+[ext_resource type="Texture2D" uid="uid://lwjcutbwevre" path="res://Assets/art/ui/avatars/avatar-punk.png" id="1_4qu8a"]
+[ext_resource type="Script" uid="uid://blj2t2566hjtg" path="res://Scenes/Ui/Ui.cs" id="1_impxa"]
+[ext_resource type="Texture2D" uid="uid://cm6vdhoisabqc" path="res://Assets/art/ui/avatars/avatar-player.png" id="2_0nsdw"]
+[ext_resource type="PackedScene" uid="uid://5v764pthxrbr" path="res://Scenes/Ui/HealthBar.tscn" id="3_0nsdw"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_impxa")
+
+[node name="UiContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemyAvatar" type="TextureRect" parent="UiContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+texture = ExtResource("1_4qu8a")
+
+[node name="PlayerAvatar" type="TextureRect" parent="UiContainer"]
+layout_mode = 1
+offset_right = 11.0
+offset_bottom = 11.0
+texture = ExtResource("2_0nsdw")
+
+[node name="PlayerHealthBar" parent="UiContainer" instance=ExtResource("3_0nsdw")]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 7.0
+offset_right = -58.0
+offset_bottom = -53.0
+
+[node name="EnemyHealthBar" parent="UiContainer" instance=ExtResource("3_0nsdw")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -42.0
+offset_top = 7.0
+offset_right = -42.0
+offset_bottom = 7.0
+grow_horizontal = 0
+grow_vertical = 1

@@ -22,3 +22,7 @@ res://Scenes/Props/Door.cs
 res://Scenes/Characters/Character.cs
 res://Scenes/Scene/Stage.cs
 res://Scenes/Scene/World.cs
+res://Scenes/Ui/Ui.tscn
+res://Scenes/Ui/HealthBar.tscn
+res://Scenes/Ui/HealthBar.cs
+res://Scenes/Ui/Ui.cs
