@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "9Q0ZJDZJ2Q0=",
+  "success": true,
+  "projectFilePath": "D:\\Godot\\GodotTutorials\\BeatemUpGame\\Beat-emUpGame.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\XiaoMengZhu\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
+    "C:\\Users\\XiaoMengZhu\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
+    "C:\\Users\\XiaoMengZhu\\.nuget\\packages\\godotsharpeditor\\4.4.1\\godotsharpeditor.4.4.1.nupkg.sha512",
+    "C:\\Users\\XiaoMengZhu\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.13\\microsoft.netcore.app.ref.8.0.13.nupkg.sha512",
+    "C:\\Users\\XiaoMengZhu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.13\\microsoft.windowsdesktop.app.ref.8.0.13.nupkg.sha512",
+    "C:\\Users\\XiaoMengZhu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.13\\microsoft.aspnetcore.app.ref.8.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

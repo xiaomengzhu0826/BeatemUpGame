@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dht4dld1gk2u"]
+
+[ext_resource type="PackedScene" uid="uid://1eymn7gj85kp" path="res://Scenes/Characters/Player.tscn" id="1_dwoho"]
+[ext_resource type="Script" uid="uid://dtsn5souxn2vh" path="res://Scenes/Scene/ActorsContainer.cs" id="1_f0r17"]
+[ext_resource type="PackedScene" uid="uid://yq3yxtl7gx8g" path="res://Scenes/Props/Barrel.tscn" id="2_f0r17"]
+[ext_resource type="PackedScene" uid="uid://dfx6uvtrh2bit" path="res://Scenes/Characters/BaseEnemy.tscn" id="3_tsco0"]
+[ext_resource type="PackedScene" uid="uid://0oq2kr6a3gum" path="res://Scenes/Props/Knife.tscn" id="4_iaqif"]
+[ext_resource type="PackedScene" uid="uid://cnxv1it8muj1x" path="res://Scenes/Characters/GoonEnemy.tscn" id="5_ow8mw"]
+
+[node name="ActorsContainer" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_f0r17")
+
+[node name="Player" parent="." instance=ExtResource("1_dwoho")]
+unique_name_in_owner = true
+position = Vector2(55, 44)
+_damage = 2
+
+[node name="Barrel" parent="." instance=ExtResource("2_f0r17")]
+position = Vector2(88, 46)
+
+[node name="BaseEnemy" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("3_tsco0")]
+position = Vector2(26, 57)
+_player = NodePath("../Player")
+_durationBetweenKnifeRespawn = 2000.0
+
+[node name="Knife" parent="." instance=ExtResource("4_iaqif")]
+position = Vector2(72, 52)
+_speed = 0.0
+_knockdownIntensity = 0.0
+
+[node name="GoonEnemy" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("5_ow8mw")]
+position = Vector2(88, 58)
+_player = NodePath("../Player")

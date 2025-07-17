@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bye2ij04t58yi"]
+
+[ext_resource type="Script" uid="uid://ci4t3pgk5tqiq" path="res://Scenes/Globals/PrefabManager.cs" id="1_gen4i"]
+
+[node name="PrefabManager" type="Node"]
+script = ExtResource("1_gen4i")

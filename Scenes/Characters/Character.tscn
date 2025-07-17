@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://6myoaoid1sgf"]
+
+[ext_resource type="Script" uid="uid://cd3vq4qxbak55" path="res://Scenes/Characters/Character.cs" id="1_6p7dp"]
+[ext_resource type="Texture2D" uid="uid://boh3klhvxu5j1" path="res://Assets/art/characters/shadow.png" id="2_an0dn"]
+[ext_resource type="PackedScene" uid="uid://cif0vjag0mpo1" path="res://Scenes/Scene/DamageEmitter.tscn" id="3_an0dn"]
+[ext_resource type="PackedScene" uid="uid://by4nx3b0srf2p" path="res://Scenes/Scene/DamageReceiver.tscn" id="4_bv4r1"]
+
+[node name="Character" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_6p7dp")
+_speed = 5.0
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_an0dn")
+centered = false
+offset = Vector2(-7, 0)
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DamageEmitter" parent="." instance=ExtResource("3_an0dn")]
+
+[node name="DamageReceiver" parent="." instance=ExtResource("4_bv4r1")]
+
+[node name="CollateralDamageEmitter" parent="." instance=ExtResource("3_an0dn")]
+
+[node name="KnifeSprite2D" type="Sprite2D" parent="."]
+hframes = 10
+vframes = 10
+
+[node name="WeaponPosition" type="Node2D" parent="KnifeSprite2D"]
+unique_name_in_owner = true
+
+[node name="GunSprite" type="Sprite2D" parent="."]
+
+[node name="ProjectileAim" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collision_mask = 0
+
+[node name="CollectibleSensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleSensor"]
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]
+[editable path="CollateralDamageEmitter"]

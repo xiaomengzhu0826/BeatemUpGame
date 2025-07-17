@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=3 uid="uid://0oq2kr6a3gum"]
+
+[ext_resource type="PackedScene" uid="uid://dxyd4y1rp23fl" path="res://Scenes/Props/Collectible.tscn" id="1_sj08d"]
+[ext_resource type="Texture2D" uid="uid://bvjhr7yo1r37x" path="res://Assets/art/props/knife.png" id="2_tlm7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlm7b"]
+size = Vector2(14.5, 14.5)
+
+[sub_resource type="Animation" id="Animation_umg8a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollecibleSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollecibleSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_tlm7b"]
+resource_name = "fall"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollecibleSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.5708, 3.14159, 4.71239]
+}
+
+[sub_resource type="Animation" id="Animation_d2y72"]
+resource_name = "fly"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollecibleSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mho58"]
+resource_name = "grounded"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollecibleSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollecibleSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umg8a"]
+_data = {
+&"RESET": SubResource("Animation_umg8a"),
+&"fall": SubResource("Animation_tlm7b"),
+&"fly": SubResource("Animation_d2y72"),
+&"grounded": SubResource("Animation_mho58")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umg8a"]
+size = Vector2(3, 3)
+
+[node name="Knife" instance=ExtResource("1_sj08d")]
+monitoring = true
+_damage = 4
+_speed = 150.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_tlm7b")
+
+[node name="CollecibleSprite" parent="." index="1"]
+position = Vector2(0, -8)
+texture = ExtResource("2_tlm7b")
+centered = false
+offset = Vector2(-8, -8)
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_umg8a")
+}
+
+[node name="DamageEmitter" parent="." index="4"]
+collision_mask = 176
+monitoring = true
+
+[node name="CollisionShape2D" parent="DamageEmitter" index="0"]
+shape = SubResource("RectangleShape2D_umg8a")
+
+[editable path="DamageEmitter"]
