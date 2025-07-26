@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://kias30b0bp64"]
+
+[ext_resource type="Theme" uid="uid://83unl0i4dktl" path="res://Config/gui_theme.tres" id="1_kxngo"]
+
+[node name="ActivableControl" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_kxngo")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "OPTION"

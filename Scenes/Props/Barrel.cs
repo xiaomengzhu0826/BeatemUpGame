@@ -47,7 +47,8 @@ public partial class Barrel : StaticBody2D
 			_heightSpeed = _knockbackIntensity * 2;
 			_currentState = State.DESTROYED;
 			_velocity = direction * _knockbackIntensity;
-			SignalManager.EmitOnSpawnCollectible((int)_contentType, (int)Collectible.State.FALL, GlobalPosition, Vector2.Zero, 0.0f,false);
+			SignalManager.EmitOnSpawnCollectible((int)_contentType, (int)Collectible.State.FALL, GlobalPosition, Vector2.Zero, 0.0f, false);
+			SoundManager.Instance.Play(SoundManager.SoundType.HIT1,true);
 		}
 		
 	}

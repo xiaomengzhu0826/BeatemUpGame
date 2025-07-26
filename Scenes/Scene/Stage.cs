@@ -3,6 +3,8 @@ using System;
 
 public partial class Stage : Node2D
 {
+    [Export] private MusicManager.MusicType _music;
+
     private Node2D _containers;
     private Node2D _doors;
     private Node2D _checkPoints;
@@ -40,6 +42,8 @@ public partial class Stage : Node2D
         {
             checkPoint.CreateEnemyData();
         }
+
+        MusicManager.Instance.Play(_music);
     }
 
     private void DeferredEmit(Node2D node2D)

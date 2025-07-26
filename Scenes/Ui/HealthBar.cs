@@ -3,6 +3,8 @@ using System;
 
 public partial class HealthBar : Control
 {
+	[Export] private bool _isInverted;
+
 	private ColorRect _contentBackground;
 	private ColorRect _whiteBorder;
 	private TextureRect _healthGaughe;
@@ -16,8 +18,9 @@ public partial class HealthBar : Control
 
 	public void Refresh(int currentHealth, int maxHealth)
 	{
-		_whiteBorder.Scale = new Vector2(maxHealth+2, _whiteBorder.Scale.Y);
-		_contentBackground.Scale = new Vector2(maxHealth, _contentBackground.Scale.Y);
-		_healthGaughe.Scale = new Vector2(currentHealth, _healthGaughe.Scale.Y);
+		var rev= _isInverted ? -1 : 1;
+		_whiteBorder.Scale = new Vector2((maxHealth+2)*rev, _whiteBorder.Scale.Y);
+		_contentBackground.Scale = new Vector2(maxHealth*rev, _contentBackground.Scale.Y);
+		_healthGaughe.Scale = new Vector2(currentHealth*rev, _healthGaughe.Scale.Y);
 	}
 }

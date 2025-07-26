@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmh2ljklvax82"]
+
+[ext_resource type="Script" uid="uid://bxpvvyaujyli8" path="res://Scenes/Globals/SoundManager.cs" id="1_7c8l5"]
+[ext_resource type="AudioStream" uid="uid://dhy6srnmwww8l" path="res://Assets/sfx/click.wav" id="2_6lef7"]
+[ext_resource type="AudioStream" uid="uid://myg7s3h8paw4" path="res://Assets/sfx/eat-food.wav" id="3_geinu"]
+[ext_resource type="AudioStream" uid="uid://c46qkqk171uvj" path="res://Assets/sfx/gogogo.wav" id="4_e5txf"]
+[ext_resource type="AudioStream" uid="uid://jgjndxybufcy" path="res://Assets/sfx/grunt.wav" id="5_ys7wn"]
+[ext_resource type="AudioStream" uid="uid://chyvb60gmw4lf" path="res://Assets/sfx/gunshot.wav" id="6_ggaig"]
+[ext_resource type="AudioStream" uid="uid://bv2ynjpc0gb2j" path="res://Assets/sfx/hit-1.wav" id="7_qga2v"]
+[ext_resource type="AudioStream" uid="uid://y1xaeojn6gb4" path="res://Assets/sfx/hit-2.wav" id="8_pm0vq"]
+[ext_resource type="AudioStream" uid="uid://bbtfr3bwcivea" path="res://Assets/sfx/knife-hit.wav" id="9_awobi"]
+[ext_resource type="AudioStream" uid="uid://dc4mwmsn5xt6i" path="res://Assets/sfx/miss.wav" id="10_usmxp"]
+
+[node name="SoundPlayer" type="Node"]
+script = ExtResource("1_7c8l5")
+
+[node name="SFXClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6lef7")
+bus = &"SFX"
+
+[node name="SFXFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_geinu")
+bus = &"SFX"
+
+[node name="SFXGoGoGo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e5txf")
+bus = &"SFX"
+
+[node name="SFXGrunt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ys7wn")
+bus = &"SFX"
+
+[node name="SFXGunShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ggaig")
+bus = &"SFX"
+
+[node name="SFXHit1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qga2v")
+bus = &"SFX"
+
+[node name="SFXHit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pm0vq")
+bus = &"SFX"
+
+[node name="SFXKnife" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_awobi")
+bus = &"SFX"
+
+[node name="SFXSwoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_usmxp")
+bus = &"SFX"

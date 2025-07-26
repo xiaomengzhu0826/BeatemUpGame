@@ -58,11 +58,32 @@ public partial class SignalManager : Node
     {
         Instance.EmitSignal(SignalName.OnOrphanActor, orphan);
     }
-    
-    [Signal] public delegate void OnHealthChangeEventHandler(Character.Type characterType,int currentHealth,int maxHealth);
-    
-    public static void EmitOnHealthChange(int characterType,int currentHealth,int maxHealth)
+
+    [Signal] public delegate void OnHealthChangeEventHandler(Character.Type characterType, int currentHealth, int maxHealth);
+
+    public static void EmitOnHealthChange(int characterType, int currentHealth, int maxHealth)
     {
-        Instance.EmitSignal(SignalName.OnHealthChange,characterType,currentHealth,maxHealth);
+        Instance.EmitSignal(SignalName.OnHealthChange, characterType, currentHealth, maxHealth);
+    }
+
+    [Signal] public delegate void OnRegisterHitEventHandler();
+
+    public static void EmitOnRegisterHit()
+    {
+        Instance.EmitSignal(SignalName.OnRegisterHit);
+    }
+
+    [Signal] public delegate void OnSpawnSparkEventHandler(Vector2 sparkPosition);
+
+    public static void EmitOnSpawnSpark(Vector2 sparkPosition)
+    {
+        Instance.EmitSignal(SignalName.OnSpawnSpark, sparkPosition);
+    }
+    
+    [Signal] public delegate void OnHeavyBlowReceivedEventHandler();
+    
+    public static void EmitOnHeavyBlowReceived()
+    {
+        Instance.EmitSignal(SignalName.OnHeavyBlowReceived);
     }
 }

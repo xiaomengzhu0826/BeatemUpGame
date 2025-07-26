@@ -221,10 +221,15 @@ public partial class BaseEnemy : Character
 	protected override void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
 	{
 		base.OnDamageReceived(damage, direction, hitType);
-		if (_currentHealth == 0)
+		SignalManager.EmitOnRegisterHit();
+		if (_currentHealth == 0 || hitType == DamageReceiver.HitType.POWER)
 		{
-			Player.FreeSlot(this);
-			SignalManager.EmitOnDeathEnemy(this);
+			SignalManager.EmitOnSpawnSpark(Position);
 		}
+		if (_currentHealth == 0)
+			{
+				Player.FreeSlot(this);
+				SignalManager.EmitOnDeathEnemy(this);
+			}
 	}
 }

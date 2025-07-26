@@ -125,6 +125,7 @@ public partial class Collectible : Area2D
 	{
 		var damageReceive = (DamageReceiver)area;
 		damageReceive.EmitSignal(DamageReceiver.SignalName.OnDamageReceived, _damage, _direction, (int)DamageReceiver.HitType.KNOCKDOWN);
+		SignalManager.EmitOnSpawnSpark(Position);
 		QueueFree();
 	}
 	

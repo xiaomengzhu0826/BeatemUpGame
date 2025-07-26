@@ -67,6 +67,7 @@ public partial class Player : Character
 				else
 				{
 					_currentState = State.ATTACK;
+					SoundManager.Instance.Play(SoundManager.SoundType.SWOOSH);
 					if (_isLastHitSuccessful)
 					{
 						_timeSinceLastSuccessfulAttack = Time.GetTicksMsec();
@@ -89,6 +90,7 @@ public partial class Player : Character
 		if (CanJumpKick() && Input.IsActionPressed("attack"))
 		{
 			_currentState = State.JUMPKICK;
+			SoundManager.Instance.Play(SoundManager.SoundType.SWOOSH);
 		}
 	}
 

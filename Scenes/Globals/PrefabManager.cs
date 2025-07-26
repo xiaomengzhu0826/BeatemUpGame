@@ -19,20 +19,17 @@ public partial class PrefabManager : Node
         FOOD
     }
 
-    public enum EnemyKeys
+    public enum EffectType
     {
-        PUNK,
-        GOON,
-        THUG,
-        BOUNCER
+        SPARK,
     }
 
-    public static readonly Dictionary<EnemyKeys, PackedScene> ENEMY_PREFAB = new Dictionary<EnemyKeys, PackedScene>()
+    public static readonly Dictionary<Character.Type, PackedScene> ENEMY_PREFAB = new Dictionary<Character.Type, PackedScene>()
     {
-        { EnemyKeys.PUNK, GD.Load<PackedScene>("res://Scenes/Characters/BaseEnemy.tscn") },
-        { EnemyKeys.GOON, GD.Load<PackedScene>("res://Scenes/Characters/GoonEnemy.tscn") },
-        { EnemyKeys.THUG, GD.Load<PackedScene>("res://Scenes/Characters/ThugEnemy.tscn") },
-        { EnemyKeys.BOUNCER, GD.Load<PackedScene>("res://Scenes/Characters/IgorBoss.tscn") },
+        { Character.Type.PUNK, GD.Load<PackedScene>("res://Scenes/Characters/BaseEnemy.tscn") },
+        { Character.Type.GOON, GD.Load<PackedScene>("res://Scenes/Characters/GoonEnemy.tscn") },
+        { Character.Type.THUG, GD.Load<PackedScene>("res://Scenes/Characters/ThugEnemy.tscn") },
+        { Character.Type.BOUNCER, GD.Load<PackedScene>("res://Scenes/Characters/IgorBoss.tscn") },
     };
 
     public static readonly Dictionary<CollectibleKeys, PackedScene> COLLECTIBLE_PREFAB = new Dictionary<CollectibleKeys, PackedScene>()
@@ -43,11 +40,16 @@ public partial class PrefabManager : Node
         { CollectibleKeys.FOOD, GD.Load<PackedScene>("res://Scenes/Props/Food.tscn") },
     };
 
-    public static readonly Dictionary<Character.Type, PackedScene> AVATAR_PREFAB = new Dictionary<Character.Type, PackedScene>()
+    public static readonly Dictionary<Character.Type, Texture2D> AVATAR_PREFAB = new Dictionary<Character.Type, Texture2D>()
     {
-        { Character.Type.PUNK, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-punk.png") },
-        { Character.Type.GOON, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-goon.png") },
-        { Character.Type.THUG, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-thug.png") },
-        { Character.Type.BOUNCER, GD.Load<PackedScene>("res://Assets/art/ui/avatars/avatar-boss.png") },
+        { Character.Type.PUNK, GD.Load<Texture2D>("res://Assets/art/ui/avatars/avatar-punk.png") },
+        { Character.Type.GOON, GD.Load<Texture2D>("res://Assets/art/ui/avatars/avatar-goon.png") },
+        { Character.Type.THUG, GD.Load<Texture2D>("res://Assets/art/ui/avatars/avatar-thug.png") },
+        { Character.Type.BOUNCER, GD.Load<Texture2D>("res://Assets/art/ui/avatars/avatar-boss.png") },
+    };
+
+    public static readonly Dictionary<EffectType, PackedScene> EFFECT_PREFAB = new Dictionary<EffectType, PackedScene>()
+    {
+        { EffectType.SPARK, GD.Load<PackedScene>("res://Scenes/Props/Spark.tscn") },
     };
 }

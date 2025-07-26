@@ -105,12 +105,15 @@ public partial class IgorBoss : Character
 			_knockbackForce = direction * _knockbackIntensity;
 			return;
 		}
+		SignalManager.EmitOnRegisterHit();
 		_currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
 		if (_currentHealth == 0)
 		{
+			SignalManager.EmitOnSpawnSpark(Position);
 			_currentState = State.FALL;
 			_heightSpeed = _knockdownIntensity;
 			Velocity = direction * _knockdownIntensity;
+			SoundManager.Instance.Play(SoundManager.SoundType.GRUNT);
 			SignalManager.EmitOnDeathEnemy(this);
 		}
 		else

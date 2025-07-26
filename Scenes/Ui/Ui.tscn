@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://djqfednupjsyy"]
+[gd_scene load_steps=9 format=3 uid="uid://djqfednupjsyy"]
 
 [ext_resource type="Texture2D" uid="uid://lwjcutbwevre" path="res://Assets/art/ui/avatars/avatar-punk.png" id="1_4qu8a"]
 [ext_resource type="Script" uid="uid://blj2t2566hjtg" path="res://Scenes/Ui/Ui.cs" id="1_impxa"]
 [ext_resource type="Texture2D" uid="uid://cm6vdhoisabqc" path="res://Assets/art/ui/avatars/avatar-player.png" id="2_0nsdw"]
 [ext_resource type="PackedScene" uid="uid://5v764pthxrbr" path="res://Scenes/Ui/HealthBar.tscn" id="3_0nsdw"]
+[ext_resource type="PackedScene" uid="uid://bpxo2bby468eg" path="res://Scenes/Ui/ComboIndicator.tscn" id="5_ebkin"]
+[ext_resource type="PackedScene" uid="uid://kx1lq3xgx7kc" path="res://Scenes/Ui/FlickeringTextureRect.tscn" id="5_g7pn5"]
+[ext_resource type="PackedScene" uid="uid://c5wppkjv0ikj7" path="res://Scenes/Ui/ScoreIndicator.tscn" id="6_3fik5"]
+[ext_resource type="Texture2D" uid="uid://chmb21orfchfl" path="res://Assets/art/ui/go-go-go.png" id="6_12wpq"]
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_impxa")
+_durationHealthbarVisible = 1000
 
 [node name="UiContainer" type="Control" parent="."]
 layout_mode = 3
@@ -41,12 +46,58 @@ offset_bottom = -53.0
 
 [node name="EnemyHealthBar" parent="UiContainer" instance=ExtResource("3_0nsdw")]
 layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -25.0
+offset_right = -11.0
+offset_bottom = -25.0
+grow_horizontal = 0
+_isInverted = true
+
+[node name="WhiteBorder" parent="UiContainer/EnemyHealthBar" index="0"]
+layout_direction = 3
+scale = Vector2(-30, 1)
+
+[node name="ContentBackground" parent="UiContainer/EnemyHealthBar" index="1"]
+layout_direction = 3
+scale = Vector2(-28, 1)
+
+[node name="TextureRect" parent="UiContainer/EnemyHealthBar" index="2"]
+layout_direction = 3
+scale = Vector2(-10, 1)
+
+[node name="ComboIndicator" parent="UiContainer" instance=ExtResource("5_ebkin")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 23.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="ScoreIndicator" parent="UiContainer" instance=ExtResource("6_3fik5")]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 39.0
+
+[node name="GoIndicator" parent="UiContainer" instance=ExtResource("5_g7pn5")]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -42.0
-offset_top = 7.0
-offset_right = -42.0
-offset_bottom = 7.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 11.0
+offset_right = 0.0
+offset_bottom = 27.0
 grow_horizontal = 0
-grow_vertical = 1
+texture = ExtResource("6_12wpq")
+stretch_mode = 2
+_durationFlicker = 200
+_totalFlickers = 3
+
+[editable path="UiContainer/EnemyHealthBar"]

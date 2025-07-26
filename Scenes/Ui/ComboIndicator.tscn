@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpxo2bby468eg"]
+
+[ext_resource type="Theme" uid="uid://83unl0i4dktl" path="res://Config/gui_theme.tres" id="1_nn1rd"]
+[ext_resource type="Script" uid="uid://dfyqktfyr8ej1" path="res://Scenes/Ui/ComboIndicator.cs" id="2_2qmfb"]
+
+[node name="ComboIndicator" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nn1rd")
+text = "x10"
+script = ExtResource("2_2qmfb")
+_durationComboTimeout = 2000

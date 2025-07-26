@@ -10,7 +10,7 @@ public partial class World : Node
     private AnimatableBody2D _rightWall;
     private Node2D _actorsContainer;
     private bool _isCameraLocked = false;
-    private List<Door> _doors= new List<Door>();
+    private List<Door> _doors = new List<Door>();
 
 
     public override void _Ready()
@@ -24,6 +24,7 @@ public partial class World : Node
         SignalManager.Instance.OnOrphanActor += OnOrphanActor;
         SignalManager.Instance.OnCheckPointStart += OnCheckPointStart;
         SignalManager.Instance.OnCheckPointCompelete += OnCheckPointCompelete;
+        SignalManager.Instance.OnSpawnSpark += OnSpawnSpark;
     }
 
     private void OnCheckPointCompelete()
@@ -90,7 +91,7 @@ public partial class World : Node
 
     private void OnSpawnEnemy(EnemyData enemyData)
     {
-        BaseEnemy enemy = (BaseEnemy)PrefabManager.ENEMY_PREFAB[(PrefabManager.EnemyKeys)enemyData._type].Instantiate();
+        BaseEnemy enemy = (BaseEnemy)PrefabManager.ENEMY_PREFAB[enemyData._type].Instantiate();
         enemy.GlobalPosition = enemyData._globalPosition;
         enemy.Player = (Player)_player;
         _actorsContainer.AddChild(enemy);
@@ -109,7 +110,7 @@ public partial class World : Node
         {
             enemy.AssignDoor(_doors[enemyData._doorIndex]);
         }
-        
+
     }
 
     private void OnOrphanActor(Node2D orphan)
@@ -118,7 +119,13 @@ public partial class World : Node
         {
             _doors.Add(door);
         }
-        GD.Print(orphan.Name);
         orphan.Reparent(_actorsContainer);
+    }
+
+    private void OnSpawnSpark(Vector2 sparkPosition)
+    {
+        var sparkInstance = PrefabManager.EFFECT_PREFAB[PrefabManager.EffectType.SPARK].Instantiate() as Node2D;
+        sparkInstance.Position = sparkPosition;
+        _actorsContainer.AddChild(sparkInstance);
     }
 }

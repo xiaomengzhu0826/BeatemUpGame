@@ -85,7 +85,6 @@ public partial class Character : CharacterBody2D
 
 	public enum Type
 	{
-
 		PUNK,
 		GOON,
 		THUG,
@@ -119,7 +118,7 @@ public partial class Character : CharacterBody2D
 			{State.APPEARING,"idle"},
 		};
 
-		SetHealth(_maxHealth);
+		SetHealth(_maxHealth, _currentType == Type.PLAYER);
 
 		NodeInitiation();
 
@@ -399,17 +398,18 @@ public partial class Character : CharacterBody2D
 			if (collectible._currentType == Collectible.Type.KNIFE && !_hasKnife)
 			{
 				_hasKnife = true;
+				SoundManager.Instance.Play(SoundManager.SoundType.SWOOSH);
 			}
 			if (collectible._currentType == Collectible.Type.GUN && !_hasGun)
 			{
 				_hasGun = true;
 				_ammoLeft = _maxAmmoPerGun;
+				SoundManager.Instance.Play(SoundManager.SoundType.SWOOSH);
 			}
 			if (collectible._currentType == Collectible.Type.FOOD)
 			{
-				//GD.Print(_currentHealth);
 				SetHealth(_maxHealth);
-				//GD.Print(_currentHealth);
+				SoundManager.Instance.Play(SoundManager.SoundType.FOOD);
 			}
 			collectible.QueueFree();
 		}
@@ -427,6 +427,8 @@ public partial class Character : CharacterBody2D
 			{
 				targetPoint = _projectileAim.GetCollisionPoint();
 				character._damageReceiver.EmitSignal(DamageReceiver.SignalName.OnDamageReceived, _damageGunshot, _heading, (int)DamageReceiver.HitType.KNOCKDOWN);
+				SignalManager.EmitOnSpawnSpark(Position);
+
 			}
 		}
 		if (target is Barrel barrel)
@@ -437,7 +439,7 @@ public partial class Character : CharacterBody2D
 				barrel._damageReceiver.EmitSignal(DamageReceiver.SignalName.OnDamageReceived, _damageGunshot, _heading, (int)DamageReceiver.HitType.KNOCKDOWN);
 			}
 		}
-
+		SoundManager.Instance.Play(SoundManager.SoundType.GUNSHOOT);
 		var weaponRootPosition = new Vector2(_weaponPosition.GlobalPosition.X, Position.Y);
 		var weaponHeight = -_weaponPosition.Position.Y;
 		var distance = targetPoint.X - _weaponPosition.GlobalPosition.X;
@@ -470,7 +472,7 @@ public partial class Character : CharacterBody2D
 		{
 			_hasKnife = false;
 		}
-
+		SoundManager.Instance.Play(SoundManager.SoundType.SWOOSH);
 		var collectibleGlobalPosition = new Vector2(_weaponPosition.GlobalPosition.X, GlobalPosition.Y);
 		var collectibleHeight = -_weaponPosition.Position.Y;
 		SignalManager.EmitOnSpawnCollectible
@@ -494,6 +496,7 @@ public partial class Character : CharacterBody2D
 	{
 		_currentState = State.JUMP;
 		_heightSpeed = _jumpIntensity;
+		SoundManager.Instance.Play(SoundManager.SoundType.SWOOSH);
 	}
 
 	public void OnLandCompelete()
@@ -540,16 +543,19 @@ public partial class Character : CharacterBody2D
 				SignalManager.EmitOnSpawnCollectible((int)Collectible.Type.GUN, (int)Collectible.State.FALL, GlobalPosition, Vector2.Zero, 0.0f, _autoDestroyOnDrop);
 			}
 			SetHealth(_currentHealth - damage);
+			SoundManager.Instance.Play(SoundManager.SoundType.HIT2, true);
 			if (_currentHealth == 0 || hitType == DamageReceiver.HitType.KNOCKDOWN)
 			{
 				_currentState = State.FALL;
 				_heightSpeed = _knockdownIntensity;
 				Velocity = direction * _knockbackIntensity;
+				SignalManager.EmitOnHeavyBlowReceived();
 			}
 			else if (hitType == DamageReceiver.HitType.POWER)
 			{
 				_currentState = State.FLY;
 				Velocity = direction * _flightSpeed;
+				SignalManager.EmitOnHeavyBlowReceived();
 			}
 			else
 			{
@@ -577,10 +583,14 @@ public partial class Character : CharacterBody2D
 		}
 	}
 
-	private void SetHealth(int health)
+	private void SetHealth(int health, bool emitSignal = true)
 	{
 		_currentHealth = Mathf.Clamp(health, 0, _maxHealth);
-		SignalManager.EmitOnHealthChange((int)_currentType, _currentHealth,_maxHealth);
+		if (emitSignal)
+		{
+			SignalManager.EmitOnHealthChange((int)_currentType, _currentHealth, _maxHealth);
+		}
+
 	}
 
 }

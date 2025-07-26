@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xhi1w0as5ou"]
+
+[ext_resource type="Script" uid="uid://c1j7fo8tsih2b" path="res://Scenes/Scene/MainCamera.cs" id="1_o2b2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auae4"]
+size = Vector2(6, 64)
+
+[node name="MainCamera" type="Camera2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("1_o2b2q")
+_durationShake = 50
+_shakeIntensity = 1.0
+
+[node name="InvisiableWalls" type="Node2D" parent="."]
+position = Vector2(-50, -32)
+
+[node name="LeftWall" type="AnimatableBody2D" parent="InvisiableWalls"]
+unique_name_in_owner = true
+position = Vector2(0, 32)
+collision_layer = 128
+collision_mask = 0
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisiableWalls/LeftWall"]
+shape = SubResource("RectangleShape2D_auae4")
+
+[node name="RightWall" type="AnimatableBody2D" parent="InvisiableWalls"]
+unique_name_in_owner = true
+position = Vector2(100, 32)
+collision_layer = 128
+collision_mask = 0
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisiableWalls/RightWall"]
+shape = SubResource("RectangleShape2D_auae4")
