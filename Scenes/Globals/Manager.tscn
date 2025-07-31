@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3bp2141qad8"]
+[gd_scene load_steps=4 format=3 uid="uid://cj3bp2141qad8"]
 
 [ext_resource type="PackedScene" uid="uid://bivguttnqycgd" path="res://Scenes/Globals/SignalManager.tscn" id="1_cbep2"]
 [ext_resource type="PackedScene" uid="uid://bye2ij04t58yi" path="res://Scenes/Globals/PrefabManager.tscn" id="2_mpfkn"]
+[ext_resource type="PackedScene" uid="uid://wmnt0yjovkwb" path="res://Scenes/Globals/OptionsManager.tscn" id="3_gtt3f"]
 
 [node name="Manager" type="Node"]
 
 [node name="SignalManager" parent="." instance=ExtResource("1_cbep2")]
 
 [node name="PrefabManager" parent="." instance=ExtResource("2_mpfkn")]
+
+[node name="OptionsManager" parent="." instance=ExtResource("3_gtt3f")]

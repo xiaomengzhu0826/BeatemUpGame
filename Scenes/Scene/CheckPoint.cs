@@ -35,10 +35,20 @@ public partial class CheckPoint : Node2D
 
 	public void CreateEnemyData()
 	{
-		foreach (BaseEnemy enemy in _enemies.GetChildren())
+
+		foreach (Character enemy in _enemies.GetChildren())
 		{
-			_enemyData.Add(new EnemyData(enemy.GlobalPosition, enemy._assignedDoorIndex,enemy._currentType));
-			enemy.QueueFree();
+			if (enemy is BaseEnemy baseEnemy)
+			{
+				_enemyData.Add(new EnemyData(baseEnemy.GlobalPosition, baseEnemy._assignedDoorIndex, baseEnemy._currentType));
+				baseEnemy.QueueFree();
+			}
+			if (enemy is IgorBoss igorBoss)
+			{
+				_enemyData.Add(new EnemyData(igorBoss.GlobalPosition, igorBoss._assignedDoorIndex, igorBoss._currentType));
+				igorBoss.QueueFree();
+			}
+
 		}
 	}
 
@@ -53,7 +63,7 @@ public partial class CheckPoint : Node2D
 		if (!_isActived)
 		{
 			SignalManager.EmitOnCheckPointStart();
-			_activeEnemyCounter =0;
+			_activeEnemyCounter = 0;
 			_isActived = true;
 		}
 	}
@@ -63,9 +73,9 @@ public partial class CheckPoint : Node2D
 		_activeEnemyCounter -= 1;
 		if (_activeEnemyCounter == 0 && _enemyData.Count == 0)
 		{
-			SignalManager.EmitOnCheckPointCompelete();
+			SignalManager.EmitOnCheckPointCompelete(this);
 			QueueFree();
 		}
-    }
+	}
 
 }

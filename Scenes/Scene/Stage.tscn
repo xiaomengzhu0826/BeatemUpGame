@@ -34,3 +34,7 @@ shape = SubResource("RectangleShape2D_tesya")
 [node name="Container" type="Node2D" parent="."]
 
 [node name="Doors" type="Node2D" parent="."]
+
+[node name="Fixtures" type="Node2D" parent="."]
+
+[node name="PlayerSpawnLocation" type="Node2D" parent="."]

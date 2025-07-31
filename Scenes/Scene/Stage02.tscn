@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://sqj3gcu2vjo6"]
+
+[ext_resource type="PackedScene" uid="uid://crewyh5c7ywb1" path="res://Scenes/Scene/Stage.tscn" id="1_3yfm8"]
+[ext_resource type="Texture2D" uid="uid://dd14vsiuq4kht" path="res://Assets/art/backgrounds/bar-background.png" id="2_2ii0y"]
+[ext_resource type="PackedScene" uid="uid://be4oiouf12wa" path="res://Scenes/Scene/CheckPoint.tscn" id="3_j1cpi"]
+[ext_resource type="PackedScene" uid="uid://dulnnqn7c1e2b" path="res://Scenes/Characters/ThugEnemy.tscn" id="4_js25d"]
+[ext_resource type="PackedScene" uid="uid://dfx6uvtrh2bit" path="res://Scenes/Characters/BaseEnemy.tscn" id="5_vmu5g"]
+[ext_resource type="PackedScene" uid="uid://cnxv1it8muj1x" path="res://Scenes/Characters/GoonEnemy.tscn" id="6_4fqh1"]
+
+[node name="Stage02" instance=ExtResource("1_3yfm8")]
+_music = 3
+
+[node name="MainBackground" parent="Background" index="0"]
+texture = ExtResource("2_2ii0y")
+
+[node name="CheckPoint" parent="CheckPoints" index="0" instance=ExtResource("3_j1cpi")]
+position = Vector2(70, 0)
+
+[node name="ThugEnemy" parent="CheckPoints/CheckPoint/Enemies" index="0" instance=ExtResource("4_js25d")]
+position = Vector2(-24, 25)
+
+[node name="ThugEnemy2" parent="CheckPoints/CheckPoint/Enemies" index="1" instance=ExtResource("4_js25d")]
+position = Vector2(-21, 60)
+
+[node name="ThugEnemy3" parent="CheckPoints/CheckPoint/Enemies" index="2" instance=ExtResource("4_js25d")]
+position = Vector2(121, 22)
+
+[node name="ThugEnemy4" parent="CheckPoints/CheckPoint/Enemies" index="3" instance=ExtResource("4_js25d")]
+position = Vector2(115, 56)
+
+[node name="BaseEnemy" parent="CheckPoints/CheckPoint/Enemies" index="4" instance=ExtResource("5_vmu5g")]
+position = Vector2(22, -13)
+
+[node name="BaseEnemy2" parent="CheckPoints/CheckPoint/Enemies" index="5" instance=ExtResource("5_vmu5g")]
+position = Vector2(53, -4)
+
+[node name="BaseEnemy3" parent="CheckPoints/CheckPoint/Enemies" index="6" instance=ExtResource("5_vmu5g")]
+position = Vector2(89, -15)
+
+[node name="GoonEnemy" parent="CheckPoints/CheckPoint/Enemies" index="7" instance=ExtResource("6_4fqh1")]
+position = Vector2(14, 95)
+
+[node name="GoonEnemy2" parent="CheckPoints/CheckPoint/Enemies" index="8" instance=ExtResource("6_4fqh1")]
+position = Vector2(49, 92)
+
+[node name="GoonEnemy3" parent="CheckPoints/CheckPoint/Enemies" index="9" instance=ExtResource("6_4fqh1")]
+position = Vector2(92, 101)
+
+[node name="PlayerSpawnLocation" parent="." index="6"]
+position = Vector2(21, 49)
+
+[editable path="CheckPoints/CheckPoint"]

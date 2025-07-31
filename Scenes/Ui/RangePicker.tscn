@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://debcqnfsvb8t4"]
+
+[ext_resource type="PackedScene" uid="uid://kias30b0bp64" path="res://Scenes/Ui/ActivableControl.tscn" id="1_0e7nh"]
+[ext_resource type="Texture2D" uid="uid://dj310m0iqk1pk" path="res://Assets/art/ui/ui-tick-on.png" id="2_fpkd4"]
+[ext_resource type="Script" uid="uid://g4gn722k7bic" path="res://Scenes/Ui/RangePicker.cs" id="2_shuew"]
+
+[node name="RangePicker" instance=ExtResource("1_0e7nh")]
+script = ExtResource("2_shuew")
+_maxValue = 10
+_currentValue = 5
+
+[node name="TicksContainer" type="HBoxContainer" parent="." index="1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="TicksContainer" index="0"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="TicksContainer" index="1"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="TicksContainer" index="2"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="TicksContainer" index="3"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="TicksContainer" index="4"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="TicksContainer" index="5"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="TicksContainer" index="6"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="TicksContainer" index="7"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect9" type="TextureRect" parent="TicksContainer" index="8"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2
+
+[node name="TextureRect10" type="TextureRect" parent="TicksContainer" index="9"]
+layout_mode = 2
+texture = ExtResource("2_fpkd4")
+stretch_mode = 2

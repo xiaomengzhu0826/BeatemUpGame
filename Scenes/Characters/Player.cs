@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
 public partial class Player : Character
 {
+	private const int REVIVE_HEIGHT = 80;
+
 	[Export] private int _maxDurationBetweenSuccessfulHits;
 
 	private List<EnemySlot> _enemySlots = new();
@@ -16,7 +19,11 @@ public partial class Player : Character
 		_animationAttacks.AddRange(new string[] { "punch", "punch_alt", "kick", "roundkick" });
 		_enemySlotsParent = GetNode<Node2D>("EnemySlots");
 		_enemySlots = _enemySlotsParent.GetChildren().Cast<EnemySlot>().ToList();
+
+		SignalManager.Instance.OnPlayerRevive += OnPlayerRevive;
 	}
+
+
 
 	public override void _Process(double delta)
 	{
@@ -42,6 +49,7 @@ public partial class Player : Character
 
 		if (CanAttack() && Input.IsActionPressed("attack"))
 		{
+			Velocity = Vector2.Zero;
 			if (_hasKnife)
 			{
 				_currentState = State.THROW;
@@ -151,11 +159,19 @@ public partial class Player : Character
 	private void GamePaused()
 	{
 
-		if (_currentState == State.DEATH)
-		{
-			GD.Print("player die");
-			GetTree().Paused = true;
-		}
+		// if (_currentState == State.DEATH)
+		// {
+		// 	GD.Print("player die");
+		// 	GetTree().Paused = true;
+		// }
 
 	}
+
+	private void OnPlayerRevive()
+	{
+		_currentHealth = _maxHealth;
+		_currentState = State.JUMP;
+		_height = REVIVE_HEIGHT;
+		SignalManager.EmitOnHealthChange((int)Character.Type.PLAYER, _currentHealth, _maxHealth);
+    }
 }

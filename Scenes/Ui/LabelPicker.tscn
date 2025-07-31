@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://00ahbwlaxuru"]
+
+[ext_resource type="PackedScene" uid="uid://kias30b0bp64" path="res://Scenes/Ui/ActivableControl.tscn" id="1_hsxn4"]
+[ext_resource type="Script" uid="uid://2uqhs8ul24m0" path="res://Scenes/Ui/LabelPicker.cs" id="2_stv0s"]
+
+[node name="LabelPicker" instance=ExtResource("1_hsxn4")]
+script = ExtResource("2_stv0s")
+
+[node name="Label" parent="." index="0"]
+horizontal_alignment = 1

@@ -525,7 +525,7 @@ public partial class Character : CharacterBody2D
 		_isLastHitSuccessful = true;
 	}
 
-	protected virtual void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
+	public virtual void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
 	{
 		if (CanGetHurt())
 		{

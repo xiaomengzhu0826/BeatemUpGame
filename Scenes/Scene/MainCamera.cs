@@ -29,7 +29,11 @@ public partial class MainCamera : Camera2D
 
 	private void OnHeavyBlowReceived()
 	{
-		_isShaking = true;
-		_timeStartShaking = Time.GetTicksMsec();
+		if (OptionsManager.Instance._isScreenShakeEnabled)
+		{
+			_isShaking = true;
+			_timeStartShaking = Time.GetTicksMsec();
+		}
+
 	}
 }

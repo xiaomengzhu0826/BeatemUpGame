@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://kias30b0bp64"]
+[gd_scene load_steps=3 format=3 uid="uid://kias30b0bp64"]
 
+[ext_resource type="Script" uid="uid://che366f5dk6py" path="res://Scenes/Ui/ActivableControl.cs" id="1_3turu"]
 [ext_resource type="Theme" uid="uid://83unl0i4dktl" path="res://Config/gui_theme.tres" id="1_kxngo"]
 
 [node name="ActivableControl" type="HBoxContainer"]
+theme_override_constants/separation = 0
+script = ExtResource("1_3turu")
+_colorDefault = Color(0.490196, 0.490196, 0.490196, 1)
+_colorActive = Color(0.815686, 0.815686, 0, 1)
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(30, 0)

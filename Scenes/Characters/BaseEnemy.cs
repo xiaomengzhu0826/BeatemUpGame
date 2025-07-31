@@ -218,7 +218,7 @@ public partial class BaseEnemy : Character
 		}
 	}
 
-	protected override void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
+	public override void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
 	{
 		base.OnDamageReceived(damage, direction, hitType);
 		SignalManager.EmitOnRegisterHit();

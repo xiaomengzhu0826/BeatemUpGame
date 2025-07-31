@@ -8,6 +8,7 @@ public partial class Stage : Node2D
     private Node2D _containers;
     private Node2D _doors;
     private Node2D _checkPoints;
+    private Node2D _playerSpawnLocation;
 
     public override void _Ready()
     {
@@ -15,6 +16,9 @@ public partial class Stage : Node2D
         _containers = GetNode<Node2D>("Container");
         _doors = GetNode<Node2D>("Doors");
         _checkPoints = GetNode<Node2D>("CheckPoints");
+        _playerSpawnLocation = GetNode<Node2D>("PlayerSpawnLocation");
+
+        SignalManager.Instance.OnCheckPointCompelete += OnCheckPointCompelete;
 
         foreach (Node2D container in _containers.GetChildren())
         {
@@ -46,8 +50,22 @@ public partial class Stage : Node2D
         MusicManager.Instance.Play(_music);
     }
 
+    private void OnCheckPointCompelete(CheckPoint checkPoint)
+    {
+        if (_checkPoints.GetChild(-1) == checkPoint)
+        {
+            SignalManager.EmitOnStageCompelete();
+        }
+    }
+
+
     private void DeferredEmit(Node2D node2D)
     {
         SignalManager.EmitOnOrphanActor(node2D);
+    }
+
+    public Vector2 GetPlayerSpawnLocation()
+    {
+        return _playerSpawnLocation.Position;
     }
 }

@@ -6,7 +6,7 @@ public partial class IgorBoss : Character
 {
 	private const int GROUND_FRICTION = 50;
 
-	[Export] private Player _player;
+	public Player _player;
 	[Export] private int _durationBetweenAttacks;
 	[Export] private int _durationVulnerable;
 	[Export] private int _distanceFromPlayer;
@@ -14,6 +14,7 @@ public partial class IgorBoss : Character
 	private Vector2 _knockbackForce = Vector2.Zero;
 	private float _timeLastAttack = Time.GetTicksMsec();
 	private float _timeStartVulnerable = Time.GetTicksMsec();
+	public int _assignedDoorIndex = -1;
 
 	public override void _Process(double delta)
 	{
@@ -98,7 +99,7 @@ public partial class IgorBoss : Character
 		return _currentState == State.RECOVERY;
 	}
 
-	protected override void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
+	public override void OnDamageReceived(int damage, Vector2 direction, DamageReceiver.HitType hitType)
 	{
 		if (!IsVulnerable())
 		{

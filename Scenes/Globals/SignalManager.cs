@@ -45,11 +45,11 @@ public partial class SignalManager : Node
         Instance.EmitSignal(SignalName.OnCheckPointStart);
     }
 
-    [Signal] public delegate void OnCheckPointCompeleteEventHandler();
+    [Signal] public delegate void OnCheckPointCompeleteEventHandler(CheckPoint checkPoint);
 
-    public static void EmitOnCheckPointCompelete()
+    public static void EmitOnCheckPointCompelete(CheckPoint checkPoint)
     {
-        Instance.EmitSignal(SignalName.OnCheckPointCompelete);
+        Instance.EmitSignal(SignalName.OnCheckPointCompelete, checkPoint);
     }
 
     [Signal] public delegate void OnOrphanActorEventHandler(Node2D orphan);
@@ -79,11 +79,34 @@ public partial class SignalManager : Node
     {
         Instance.EmitSignal(SignalName.OnSpawnSpark, sparkPosition);
     }
-    
+
     [Signal] public delegate void OnHeavyBlowReceivedEventHandler();
-    
+
     public static void EmitOnHeavyBlowReceived()
     {
         Instance.EmitSignal(SignalName.OnHeavyBlowReceived);
     }
+
+    [Signal] public delegate void OnPlayerReviveEventHandler();
+
+    public static void EmitOnPlayerRevive()
+    {
+        Instance.EmitSignal(SignalName.OnPlayerRevive);
+    }
+
+    [Signal] public delegate void OnStageCompeleteEventHandler();
+
+    public static void EmitOnStageCompelete()
+    {
+        Instance.EmitSignal(SignalName.OnStageCompelete);
+    }
+    
+    [Signal] public delegate void OnStageInterimEventHandler();
+    
+    public static void EmitOnStageInterim()
+    {
+        Instance.EmitSignal(SignalName.OnStageInterim);
+    }
+    
+
 }
